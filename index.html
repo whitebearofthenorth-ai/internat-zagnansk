@@ -25,6 +25,32 @@
                 <h2>Internat Life</h2>
                 <p id="site-age" class="counter-text"></p>
             </div>
+<!-- Czysty, bezobrazkowy licznik odwiedzin -->
+<div class="counter-box" style="margin: 12px 0; text-align: center; background: #111; padding: 8px; border: 1px solid #333; border-radius: 4px;">
+    <span style="font-size: 0.6rem; color: #aaa; display: block; margin-bottom: 4px;">Liczba odwiedzin:</span>
+    <span id="visit-counter" style="font-size: 1.2rem; font-weight: bold; color: #ffcc00; font-family: monospace;">...</span>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Unikalna nazwa Twojego licznika w chmurze CounterAPI
+        const counterName = "internat-zagnansk-2005-archive";
+        
+        fetch(`https://api.counterapi.dev/v1/internat-zagnansk/${counterName}/up`)
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.count !== undefined) {
+                    document.getElementById("visit-counter").innerText = data.count;
+                } else {
+                    document.getElementById("visit-counter").innerText = "1";
+                }
+            })
+            .catch(() => {
+                // Gdyby cokolwiek zablokowało połączenie, wyświetli 1 zamiast błędu
+                document.getElementById("visit-counter").innerText = "1";
+            });
+    });
+</script>
             
             <ul class="nav-links">
                 <li><a href="#wstep">Wstęp</a></li>
@@ -75,22 +101,22 @@
                 
                 <div class="gallery-row center-content">
                     <img src="kuba.jpg" alt="Kuba - autor strony" loading="lazy">
-                    <p class="img-caption"><em>A tak wyglądałem jakieś lata świetlne temu. W tle nówka sztuka nie śmigana – kultowy Fiat 125p mojego dziadka. Szpan na wsi gwarantowany.</em></p>
+                    <p class="img-caption"><em>A tak wyglądałem jakieś 16 lat temu. W tle nówka sztuka nie śmigana – kultowy Fiat 125p mojego dziadka. Szpan na wsi gwarantowany.</em></p>
                 </div>
 
-                <p>Na co dzień egzystuję na pięknej mazowieckiej wsi, a na świat przyszedłem w urokliwym Gostyninie — krainie jezior, lasów i absolutnego spokoju. Życie płynęło beztrosko, dopóki w wieku dziewiętnastu lat nieznana siła wyższa (oraz seria wątpliwych decyzji życiowych) nie rzuciła mnie prosto do Zagnańska.</p>
+                <p>Na co dzień egzystuję na pięknej mazowieckiej wsi, a na świat przyszedłem w urokliwym Gostyninie — krainie jezior, lasów i absolutnego spokoju[cite: 2]. Życie płynęło beztrosko, dopóki w wieku dziewiętnastu lat nieznana siła wyższa (oraz seria wątpliwych decyzji życiowych) nie rzuciła mnie prosto do Zagnańska[cite: 2].</p>
                 
-                <p>Jak każdy świeżak z mojego rocznika, zaraz po przekroczeniu progu tzw. „internatu” przeżyłem szok kulturowy. Obiekt wyglądał, jakby przetrwał przynajmniej dwie wojny światowe i testy broni biologicznej, a większość jego mieszkańców sprawiała wrażenie ewakuowanych z lokalnego zakładu zamkniętego. Nic dziwnego, że moja przygoda z tą placówką nie trwała długo — uciekłem na stancję, dołączając do zaszczytnego grona kumpli, których młodzieńcza nonszalanckość przerosła możliwości internackiego rygoru.</p>
+                <p>Jak każdy świeżak z mojego rocznika, zaraz po przekroczeniu progu tzw. „internatu” przeżyłem szok kulturowy[cite: 2]. Obiekt wyglądał, jakby przetrwał przynajmniej dwie wojny światowe i testy broni biologicznej, a większość jego mieszkańców sprawiała wrażenie ewakuowanych z lokalnego zakładu zamkniętego[cite: 2]. Nic dziwnego, że moja przygoda z tą placówką nie trwała długo — uciekłem na stancję, dołączając do zaszczytnego grona kumpli, których młodzieńcza nonszalanckość przerosła możliwości internackiego rygoru[cite: 2].</p>
 
-                <p>Początkowo byłem święcie przekonany, że wpakowałem się w dwuletni wyrok wyjęty z życiorysu. Na szczęście mała kompensata od losu sprawiła, że trafiłem na stado równie specyficznych wariatów, z którymi te dwa lata minęły niebezpiecznie szybko i przyjemnie. Szczególne pozdrowienia ślę do Ewy — szkoda, że nasze drogi skrzyżowały się na tak krótko!</p>
+                <p>Początkowo byłem święcie przekonany, że wpakowałem się w dwuletni wyrok wyjęty z życiorysu[cite: 2]. Na szczęście mała kompensata od losu sprawiła, że trafiłem na stado równie specyficznych wariatów, z którymi te dwa lata minęły niebezpiecznie szybko i przyjemnie[cite: 2]. Szczególne pozdrowienia ślę do Ewy — szkoda, że nasze drogi skrzyżowały się na tak krótko[cite: 2]!</p>
 
-                <p>Naskrobanie tej strony kosztowało mnie całe mnóstwo zarwanych nocy przed monitorem kineskopowym, ale nie żałuję ani minuty. Wielkie dzięki dla wszystkich, którzy dorzucili swoją cegiełkę, ze szczególnym uwzględnieniem Rudola — gość udostępnił archiwalne fotki robione swoim kalkulatorem... to znaczy telefonem. Mam nadzieję, że ten serwis przywoła wam parę wspomnień z czasów Szkoły Leśnej.</p>
+                <p>Naskrobanie tej strony kosztowało mnie całe mnóstwo zarwanych nocy przed monitorem kineskopowym, ale nie żałuję ani minuty[cite: 2]. Wielkie dzięki dla wszystkich, którzy dorzucili swoją cegiełkę, ze szczególnym uwzględnieniem Rudola — gość udostępnił archiwalne fotki robione swoim kalkulatorem... to znaczy telefonem[cite: 2]. Mam nadzieję, że ten serwis przywoła wam parę wspomnień z czasów Szkoły Leśnej[cite: 2].</p>
 
                 <div class="proverb">
-                    <p><strong>P.S. Order Uśmiechu i Wiecznej Wdzięczności:</strong> Składam oficjalne pokłony Pani Kiniorskiej za przyjęcie mnie pod swój dach. Gdyby nie jej litość, przepadłbym w mrokach dziejów z kretesem.</p>
+                    <p><strong>P.S. Order Uśmiechu i Wiecznej Wdzięczności:</strong> Składam oficjalne pokłony Pani Kiniorskiej za przyjęcie mnie pod swój dach[cite: 2]. Gdyby nie jej litość, przepadłbym w mrokach dziejów z kretesem[cite: 2].</p>
                 </div>
 
-                <p class="source-note"><em>Masz jakieś uwagi, żale lub wnioski formalne? Skargi przyjmuję drogą mailową (lub tradycyjnym gołębiem pocztowym).</em></p>
+                <p class="source-note"><em>Masz jakieś uwagi, żale lub wnioski formalne? Skargi przyjmuję drogą mailową (lub tradycyjnym gołębiem pocztowym)[cite: 2].</em></p>
             </section>
 
             <hr class="divider">
