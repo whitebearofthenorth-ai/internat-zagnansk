@@ -390,32 +390,35 @@
     </script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const workspace = "internat-zagnansk-2026";
+    const namespace = "zagnansk-internat-2026";
     const key = "visits";
-    const initialOffset = 0; // Możesz tu dodać np. 1000, jeśli chcesz "podbić" wynik z przeszłości
-
     const counterElement = document.getElementById("visit-counter");
     const hasVisited = localStorage.getItem("has_visited_zagnansk");
 
     if (!hasVisited) {
-        // Pierwsza wizyta - zwiększamy licznik
-        fetch(`https://api.counterapi.dev/v1/${workspace}/${key}/up`)
-            .then(res => res.json())
+        // Pierwsza wizyta - nabijamy licznik
+        fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
+            .then(res => {
+                if (!res.ok) throw new Error("Błąd API");
+                return res.json();
+            })
             .then(data => {
-                const total = (data.count || 1) + initialOffset;
-                counterElement.innerText = total;
+                counterElement.innerText = data.count;
                 localStorage.setItem("has_visited_zagnansk", "true");
             })
             .catch(() => {
+                // Jeśli API zwróci błąd, używamy zapasowej prostej metody
                 counterElement.innerText = "1";
             });
     } else {
         // Powracający użytkownik - tylko pobieramy stan
-        fetch(`https://api.counterapi.dev/v1/${workspace}/${key}`)
-            .then(res => res.json())
+        fetch(`https://api.counterapi.dev/v1/${namespace}/${key}`)
+            .then(res => {
+                if (!res.ok) throw new Error("Błąd API");
+                return res.json();
+            })
             .then(data => {
-                const total = (data.count || 1) + initialOffset;
-                counterElement.innerText = total;
+                counterElement.innerText = data.count;
             })
             .catch(() => {
                 counterElement.innerText = "1";
