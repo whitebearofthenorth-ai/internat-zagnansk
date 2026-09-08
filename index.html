@@ -24,15 +24,11 @@
                 <img src="s5.jpg" alt="Internat Life" class="nav-img">
                 <h2>Internat Life</h2>
                 <p id="site-age" class="counter-text"></p>
-<!-- Blok licznika odwiedzin -->
-<div class="counter-box">
-    <span class="counter-label">Unikalne odwiedziny:</span>
-    <div id="visit-counter" class="counter-number">Ładowanie...</div>
-</div>
             </div>
             
             <ul class="nav-links">
                 <li><a href="#wstep">Wstęp</a></li>
+                <li><a href="#o-autorze">O autorze</a></li>
                 <li><a href="#o-internacie">O internacie</a></li>
                 <li><a href="#o-szkole">O szkole</a></li>
                 <li><a href="#historia">Trochę historii</a></li>
@@ -69,6 +65,32 @@
                     </a>
                     <p class="img-caption"><em>Chcesz oficjalnej dyplomacji i sztywnych krawatów? Kliknij wyżej na byłą wychowankę, by przejść do oficjalnego serwisu.</em></p>
                 </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- Sekcja "O autorze" -->
+            <section id="o-autorze" class="author-section content-section">
+                <h3>Słów kilka o architekcie tego zamieszania</h3>
+                
+                <div class="gallery-row center-content">
+                    <img src="kuba.jpg" alt="Kuba - autor strony" loading="lazy">
+                    <p class="img-caption"><em>A tak wyglądałem jakieś 16 lat temu. W tle nówka sztuka nie śmigana – kultowy Fiat 125p mojego dziadka. Szpan na wsi gwarantowany.</em></p>
+                </div>
+
+                <p>Na co dzień egzystuję na pięknej mazowieckiej wsi, a na świat przyszedłem w urokliwym Gostyninie — krainie jezior, lasów i absolutnego spokoju[cite: 2]. Życie płynęło beztrosko, dopóki w wieku dziewiętnastu lat nieznana siła wyższa (oraz seria wątpliwych decyzji życiowych) nie rzuciła mnie prosto do Zagnańska[cite: 2].</p>
+                
+                <p>Jak każdy świeżak z mojego rocznika, zaraz po przekroczeniu progu tzw. „internatu” przeżyłem szok kulturowy[cite: 2]. Obiekt wyglądał, jakby przetrwał przynajmniej dwie wojny światowe i testy broni biologicznej, a większość jego mieszkańców sprawiała wrażenie ewakuowanych z lokalnego zakładu zamkniętego[cite: 2]. Nic dziwnego, że moja przygoda z tą placówką nie trwała długo — uciekłem na stancję, dołączając do zaszczytnego grona kumpli, których młodzieńcza nonszalanckość przerosła możliwości internackiego rygoru[cite: 2].</p>
+
+                <p>Początkowo byłem święcie przekonany, że wpakowałem się w dwuletni wyrok wyjęty z życiorysu[cite: 2]. Na szczęście mała kompensata od losu sprawiła, że trafiłem na stado równie specyficznych wariatów, z którymi te dwa lata minęły niebezpiecznie szybko i przyjemnie[cite: 2]. Szczególne pozdrowienia ślę do Ewy — szkoda, że nasze drogi skrzyżowały się na tak krótko[cite: 2]!</p>
+
+                <p>Naskrobanie tej strony kosztowało mnie całe mnóstwo zarwanych nocy przed monitorem kineskopowym, ale nie żałuję ani minuty[cite: 2]. Wielkie dzięki dla wszystkich, którzy dorzucili swoją cegiełkę, ze szczególnym uwzględnieniem Rudola — gość udostępnił archiwalne fotki robione swoim kalkulatorem... to znaczy telefonem[cite: 2]. Mam nadzieję, że ten serwis przywoła wam parę wspomnień z czasów Szkoły Leśnej[cite: 2].</p>
+
+                <div class="proverb">
+                    <p><strong>P.S. Order Uśmiechu i Wiecznej Wdzięczności:</strong> Składam oficjalne pokłony Pani Kiniorskiej za przyjęcie mnie pod swój dach[cite: 2]. Gdyby nie jej litość, przepadłbym w mrokach dziejów z kretesem[cite: 2].</p>
+                </div>
+
+                <p class="source-note"><em>Masz jakieś uwagi, żale lub wnioski formalne? Skargi przyjmuję drogą mailową (lub tradycyjnym gołębiem pocztowym)[cite: 2].</em></p>
             </section>
 
             <hr class="divider">
@@ -374,7 +396,7 @@
     </footer>
 
     <script>
-        // Obsługa daty w nagłówku
+        // Data i czas
         const dayNames = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
         const monthNames = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"];
         
@@ -388,43 +410,5 @@
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         document.getElementById('site-age').innerText = `Strona istnieje od 01.03.2005, czyli ${diffDays} dni!`;
     </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const namespace = "zagnansk-internat-2026";
-    const key = "visits";
-    const counterElement = document.getElementById("visit-counter");
-    const hasVisited = localStorage.getItem("has_visited_zagnansk");
-
-    if (!hasVisited) {
-        // Pierwsza wizyta - nabijamy licznik
-        fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
-            .then(res => {
-                if (!res.ok) throw new Error("Błąd API");
-                return res.json();
-            })
-            .then(data => {
-                counterElement.innerText = data.count;
-                localStorage.setItem("has_visited_zagnansk", "true");
-            })
-            .catch(() => {
-                // Jeśli API zwróci błąd, używamy zapasowej prostej metody
-                counterElement.innerText = "1";
-            });
-    } else {
-        // Powracający użytkownik - tylko pobieramy stan
-        fetch(`https://api.counterapi.dev/v1/${namespace}/${key}`)
-            .then(res => {
-                if (!res.ok) throw new Error("Błąd API");
-                return res.json();
-            })
-            .then(data => {
-                counterElement.innerText = data.count;
-            })
-            .catch(() => {
-                counterElement.innerText = "1";
-            });
-    }
-});
-</script>
 </body>
 </html>
