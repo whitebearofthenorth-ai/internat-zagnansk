@@ -390,22 +390,19 @@
     </script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    // Unikalny identyfikator Twojej strony dla CountAPI
-    const namespace = "internat-zagnansk-2026";
-    const key = "unique-visitors";
-    
-    // Początkowy offset (6 września 2026 r.)
-    const initialCount = 1; 
+    const workspace = "internat-zagnansk-2026";
+    const key = "visits";
+    const initialOffset = 0; // Możesz tu dodać np. 1000, jeśli chcesz "podbić" wynik z przeszłości
 
     const counterElement = document.getElementById("visit-counter");
     const hasVisited = localStorage.getItem("has_visited_zagnansk");
 
     if (!hasVisited) {
-        // Pierwsza wizyta z tej przeglądarki/IP -> zwiększamy licznik
-        fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+        // Pierwsza wizyta - zwiększamy licznik
+        fetch(`https://api.counterapi.dev/v1/${workspace}/${key}/up`)
             .then(res => res.json())
             .then(data => {
-                const total = data.value + initialCount;
+                const total = (data.count || 1) + initialOffset;
                 counterElement.innerText = total;
                 localStorage.setItem("has_visited_zagnansk", "true");
             })
@@ -413,11 +410,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 counterElement.innerText = "1";
             });
     } else {
-        // Powracający użytkownik -> tylko pobieramy aktualny stan licznika
-        fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+        // Powracający użytkownik - tylko pobieramy stan
+        fetch(`https://api.counterapi.dev/v1/${workspace}/${key}`)
             .then(res => res.json())
             .then(data => {
-                const total = (data.value || 0) + initialCount;
+                const total = (data.count || 1) + initialOffset;
                 counterElement.innerText = total;
             })
             .catch(() => {
