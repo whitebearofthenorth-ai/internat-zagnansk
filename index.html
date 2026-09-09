@@ -24,34 +24,7 @@
                 <img src="s5.jpg" alt="Internat Life" class="nav-img">
                 <h2>Internat Life</h2>
                 <p id="site-age" class="counter-text"></p>
-            </div>
-<!-- Czysty, bezobrazkowy licznik odwiedzin -->
-<div class="counter-box" style="margin: 12px 0; text-align: center; background: #111; padding: 8px; border: 1px solid #333; border-radius: 4px;">
-    <span style="font-size: 0.6rem; color: #aaa; display: block; margin-bottom: 4px;">Liczba odwiedzin:</span>
-    <span id="visit-counter" style="font-size: 1.2rem; font-weight: bold; color: #ffcc00; font-family: monospace;">...</span>
-</div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Unikalna nazwa Twojego licznika w chmurze CounterAPI
-        const counterName = "internat-zagnansk-2005-archive";
-        
-        fetch(`https://api.counterapi.dev/v1/internat-zagnansk/${counterName}/up`)
-            .then(response => response.json())
-            .then(data => {
-                if (data && data.count !== undefined) {
-                    document.getElementById("visit-counter").innerText = data.count;
-                } else {
-                    document.getElementById("visit-counter").innerText = "1";
-                }
-            })
-            .catch(() => {
-                // Gdyby cokolwiek zablokowało połączenie, wyświetli 1 zamiast błędu
-                document.getElementById("visit-counter").innerText = "1";
-            });
-    });
-</script>
-            
+            </div>    
             <ul class="nav-links">
                 <li><a href="#wstep">Wstęp</a></li>
                 <li><a href="#o-autorze">O autorze</a></li>
