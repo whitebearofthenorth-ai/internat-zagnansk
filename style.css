@@ -344,3 +344,34 @@ body {
         max-width: 100% !important;
     }
 }
+/* Drobne poprawki po audycie */
+.counter-box {
+    margin: 10px 0 18px;
+    padding: 0;
+    text-align: center;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+}
+
+.counter-label {
+    display: inline;
+    font-size: 0.85rem;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+.counter-value {
+    display: inline;
+    margin-left: 5px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #ffcc00;
+    font-family: monospace;
+}
+
+.nav-links a:focus-visible,
+.btn-contact:focus-visible {
+    outline: 2px solid #ffcc00;
+    outline-offset: 3px;
+}
