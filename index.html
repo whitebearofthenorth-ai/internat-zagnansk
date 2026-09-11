@@ -24,7 +24,44 @@
                 <img src="s5.jpg" alt="Internat Life" class="nav-img">
                 <h2>Internat Life</h2>
                 <p id="site-age" class="counter-text"></p>
-            </div>    
+            </div>
+<!-- Czysty, bezobrazkowy licznik odwiedzin -->
+<div class="counter-box">
+    <span class="counter-label">Liczba odwiedzin:</span>
+    <span id="visit-counter" class="counter-value">...</span>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async function() {
+        const visitCounter = document.getElementById("visit-counter");
+
+        try {
+            const response = await fetch("https://enotstzvfbiadbzrsjtr.supabase.co/rest/v1/rpc/increment_site_visit", {
+                method: "POST",
+                headers: {
+                    "apikey": "sb_publishable_x3J2zNPnqNuoj9rBGTTHfw_4RZOYZG2",
+                    "Authorization": "Bearer sb_publishable_x3J2zNPnqNuoj9rBGTTHfw_4RZOYZG2",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ site_name: "internat-zagnansk" }),
+                cache: "no-store"
+            });
+
+            if (!response.ok) throw new Error("Supabase HTTP " + response.status);
+
+            const count = await response.json();
+            if (typeof count === "number") {
+                visitCounter.innerText = count.toLocaleString("pl-PL");
+            } else {
+                visitCounter.innerText = "—";
+            }
+        } catch (error) {
+            console.warn("Nie udało się pobrać licznika odwiedzin:", error);
+            visitCounter.innerText = "—";
+        }
+    });
+</script>
+            
             <ul class="nav-links">
                 <li><a href="#wstep">Wstęp</a></li>
                 <li><a href="#o-autorze">O autorze</a></li>
@@ -59,10 +96,10 @@
                 </div>
 
                 <div class="center-content">
-                    <a href="http://www.techles.webpark.pl" target="_blank" rel="noopener">
+                    <a href="https://zsl-zagnansk.pl/" target="_blank" rel="noopener">
                         <img src="1.jpg" alt="Była wychowanka internatu" class="responsive-img-constrained">
                     </a>
-                    <p class="img-caption"><em>Chcesz oficjalnej dyplomacji i sztywnych krawatów? Kliknij wyżej na byłą wychowankę, by przejść do oficjalnego serwisu.</em></p>
+                    <p class="img-caption"><em>Chcesz oficjalnej dyplomacji i sztywnych krawatów? Kliknij wyżej na byłą wychowankę, by przejść do oficjalnego serwisu Zespołu Szkół Leśnych im. Romana Gesinga w Zagnańsku.</em></p>
                 </div>
             </section>
 
@@ -77,19 +114,19 @@
                     <p class="img-caption"><em>A tak wyglądałem jakieś 16 lat temu. W tle nówka sztuka nie śmigana – kultowy Fiat 125p mojego dziadka. Szpan na wsi gwarantowany.</em></p>
                 </div>
 
-                <p>Na co dzień egzystuję na pięknej mazowieckiej wsi, a na świat przyszedłem w urokliwym Gostyninie — krainie jezior, lasów i absolutnego spokoju[cite: 2]. Życie płynęło beztrosko, dopóki w wieku dziewiętnastu lat nieznana siła wyższa (oraz seria wątpliwych decyzji życiowych) nie rzuciła mnie prosto do Zagnańska[cite: 2].</p>
+                <p>Na co dzień egzystuję na pięknej mazowieckiej wsi, a na świat przyszedłem w urokliwym Gostyninie — krainie jezior, lasów i absolutnego spokoju. Życie płynęło beztrosko, dopóki w wieku dziewiętnastu lat nieznana siła wyższa (oraz seria wątpliwych decyzji życiowych) nie rzuciła mnie prosto do Zagnańska.</p>
                 
-                <p>Jak każdy świeżak z mojego rocznika, zaraz po przekroczeniu progu tzw. „internatu” przeżyłem szok kulturowy[cite: 2]. Obiekt wyglądał, jakby przetrwał przynajmniej dwie wojny światowe i testy broni biologicznej, a większość jego mieszkańców sprawiała wrażenie ewakuowanych z lokalnego zakładu zamkniętego[cite: 2]. Nic dziwnego, że moja przygoda z tą placówką nie trwała długo — uciekłem na stancję, dołączając do zaszczytnego grona kumpli, których młodzieńcza nonszalanckość przerosła możliwości internackiego rygoru[cite: 2].</p>
+                <p>Jak każdy świeżak z mojego rocznika, zaraz po przekroczeniu progu tzw. „internatu” przeżyłem szok kulturowy. Obiekt wyglądał, jakby przetrwał przynajmniej dwie wojny światowe i testy broni biologicznej, a większość jego mieszkańców sprawiała wrażenie ewakuowanych z lokalnego zakładu zamkniętego. Nic dziwnego, że moja przygoda z tą placówką nie trwała długo — uciekłem na stancję, dołączając do zaszczytnego grona kumpli, których młodzieńcza nonszalanckość przerosła możliwości internackiego rygoru.</p>
 
-                <p>Początkowo byłem święcie przekonany, że wpakowałem się w dwuletni wyrok wyjęty z życiorysu[cite: 2]. Na szczęście mała kompensata od losu sprawiła, że trafiłem na stado równie specyficznych wariatów, z którymi te dwa lata minęły niebezpiecznie szybko i przyjemnie[cite: 2]. Szczególne pozdrowienia ślę do Ewy — szkoda, że nasze drogi skrzyżowały się na tak krótko[cite: 2]!</p>
+                <p>Początkowo byłem święcie przekonany, że wpakowałem się w dwuletni wyrok wyjęty z życiorysu. Na szczęście mała kompensata od losu sprawiła, że trafiłem na stado równie specyficznych wariatów, z którymi te dwa lata minęły niebezpiecznie szybko i przyjemnie. Szczególne pozdrowienia ślę do Ewy — szkoda, że nasze drogi skrzyżowały się na tak krótko!</p>
 
-                <p>Naskrobanie tej strony kosztowało mnie całe mnóstwo zarwanych nocy przed monitorem kineskopowym, ale nie żałuję ani minuty[cite: 2]. Wielkie dzięki dla wszystkich, którzy dorzucili swoją cegiełkę, ze szczególnym uwzględnieniem Rudola — gość udostępnił archiwalne fotki robione swoim kalkulatorem... to znaczy telefonem[cite: 2]. Mam nadzieję, że ten serwis przywoła wam parę wspomnień z czasów Szkoły Leśnej[cite: 2].</p>
+                <p>Naskrobanie tej strony kosztowało mnie całe mnóstwo zarwanych nocy przed monitorem kineskopowym, ale nie żałuję ani minuty. Wielkie dzięki dla wszystkich, którzy dorzucili swoją cegiełkę, ze szczególnym uwzględnieniem Rudola — gość udostępnił archiwalne fotki robione swoim kalkulatorem... to znaczy telefonem. Mam nadzieję, że ten serwis przywoła wam parę wspomnień z czasów Szkoły Leśnej.</p>
 
                 <div class="proverb">
-                    <p><strong>P.S. Order Uśmiechu i Wiecznej Wdzięczności:</strong> Składam oficjalne pokłony Pani Kiniorskiej za przyjęcie mnie pod swój dach[cite: 2]. Gdyby nie jej litość, przepadłbym w mrokach dziejów z kretesem[cite: 2].</p>
+                    <p><strong>P.S. Order Uśmiechu i Wiecznej Wdzięczności:</strong> Składam oficjalne pokłony Pani Kiniorskiej za przyjęcie mnie pod swój dach. Gdyby nie jej litość, przepadłbym w mrokach dziejów z kretesem.</p>
                 </div>
 
-                <p class="source-note"><em>Masz jakieś uwagi, żale lub wnioski formalne? Skargi przyjmuję drogą mailową (lub tradycyjnym gołębiem pocztowym)[cite: 2].</em></p>
+                <p class="source-note"><em>Masz jakieś uwagi, żale lub wnioski formalne? Skargi przyjmuję drogą mailową (lub tradycyjnym gołębiem pocztowym).</em></p>
             </section>
 
             <hr class="divider">
@@ -365,7 +402,7 @@
                 <div class="greetings-box">
                     <h3>Pozdrowienia dla:</h3>
                     <p>chłopaków z policealnej rocznik 2002/04 i 2003/05, czyli:</p>
-                    <p class="names-list"><strong>Generała, Konrada, Dzokera, Rudola, Lali i jego wyjebanej dupy, Zawala, Sutka, Witka, Karola, Andrzejka, Harego, Foresta, Gumbasa, Stacherczyka, Zośki, Karoliny, Izy (don't speak) i Just Minety</strong></p>
+                    <p class="names-list"><strong>Generała, Konrada, Dzokera, Rudola, Lali i jego wyrąbanej dupy, Zawala, Sutka, Witka, Karola, Andrzejka, Harego, Foresta, Gumbasa, Stacherczyka, Zośki, Karoliny, Izy (don't speak) i Just Minety</strong></p>
                     <p>oraz pozdrowienia dla lokalnych klasyków bramowych Zagnańska, niezbyt wylewnych pań z kuchni i wszystkich, z którymi dzieliliśmy chleb, dym i płyny różnej maści. Hey !!!</p>
                 </div>
 
