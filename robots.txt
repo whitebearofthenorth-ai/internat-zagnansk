@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://whitebearofthenorth-ai.github.io/internat-zagnansk/sitemap.xml
